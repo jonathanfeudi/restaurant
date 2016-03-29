@@ -1,0 +1,29 @@
+<%= link_to "Back to Tables", tables_path %>
+<h1><%= @table.table_number %></h1>
+<h3>Items</h3>
+<% i = 0 %>
+<% p = 0 %>
+<% @table.items.each do |item| %>
+<p>
+  <%= item.name %>, <%= item.price %> <% p += item.price %>
+</p>
+<% mytickets = @table.items.map{|x| x.tickets.where(table_id:(@table[:id]))}.flatten %>
+<p>Fired:
+  <%= mytickets[i].fired %>,
+  Completed:
+  <%= mytickets[i].completed %>
+</p>
+<%= form_for @ticket[i], url: {:controller => "tickets", action: "update"} do |f| %>
+<%= f.hidden_field(:ticket_id, :value => @ticket[i].id) %>
+<%= f.submit "Fire" %><br>
+<% end %>
+<% i += 1 %>
+<% end %>
+<p>
+  Total = $<%= p %>
+</p>
+<h3>Add Items</h3>
+<%= form_for @table, url: {action: "update"} do |f| %>
+  <%= f.collection_select(:id, Item.all, :id, :name) %>
+<%= f.submit "Add Item" %>
+<% end %>

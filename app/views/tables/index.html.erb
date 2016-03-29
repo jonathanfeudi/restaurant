@@ -1,0 +1,8 @@
+<%= link_to "Open new table", new_table_path %>
+<% @tables.where(:user_id => session[:current_user_id]).each do |table| %>
+  <h3>
+    <%= table.table_number %>
+    <%= link_to "View", table_path(table) %>
+    <%= link_to "Close", table_path(table), method: :delete %>
+  </h3>
+  <% end %>

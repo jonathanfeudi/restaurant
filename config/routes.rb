@@ -6,12 +6,15 @@ Rails.application.routes.draw do
   root 'users#new'
   resources :users, only: [:new, :create, :show, :destroy]
   resources :items
-  resources :tables do
-    member do
-      put 'add_item'
-      put 'remove_item'
-    end
-  end
+  #resources :tables do
+    #member do
+    #  put 'add_item'
+    #  put 'remove_item'
+  #  end
+#  end
+resources :tables
+resources :admin
+resources :tickets
 
   get 'sessions/new' => 'sessions#new'
   post 'sessions' => 'sessions#create'

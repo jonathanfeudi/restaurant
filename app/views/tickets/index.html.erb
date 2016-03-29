@@ -1,0 +1,13 @@
+<% t_length = 1 %>
+
+<% Ticket.all.group_by {|ticket| ticket.table_id}.each do |table| %>
+  <h3>Table
+    <%= Ticket.all.group_by {|t| t.table_id}[t_length][0].table[:table_number] %>
+  </h3>
+    <%Ticket.all.group_by {|t| t.table_id}[t_length].each do |x| %>
+      <p>
+        <%= x.item.name %>- Fired: <%= x.fired %>
+      </p>
+    <% end %>
+  <% t_length += 1 %>
+<% end %>

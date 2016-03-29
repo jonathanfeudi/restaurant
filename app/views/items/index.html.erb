@@ -1,0 +1,8 @@
+<%= link_to "Create New Menu Item", new_item_path %>
+<% @items.each do |item| %>
+  <h3>
+    <%= item.name %>
+    <%= link_to "Edit", item_path(item) %>
+    <%= link_to "Remove", item_path(item), method: :delete %>
+  </h3>
+  <% end %>

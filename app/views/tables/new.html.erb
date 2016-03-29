@@ -1,0 +1,16 @@
+<div class="form">
+  <h1>Open a Table</h1>
+  <%= form_for @table do |f| %>
+  <%= f.label :table_number %><br>
+  <%= f.select :table_number, options_for_select((1..30).to_a) %><br>
+  <% if !@table.errors.messages[:table_number].empty? %>
+    <p> <%= @table.errors.messages[:table_number][0] %> </p>
+  <% end %>
+  <%= f.label :guests %><br>
+  <%= f.select :guests, options_for_select((1..30).to_a) %><br>
+  <%= f.label :gossip %><br>
+  <%= f.text_field :gossip %><br>
+  <%= f.submit "Open Check" %><br>
+  <%= f.hidden_field(:user_id, :value => session[:current_user_id]) %>
+  <% end %>
+</div>

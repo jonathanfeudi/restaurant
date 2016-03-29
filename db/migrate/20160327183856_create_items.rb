@@ -5,6 +5,7 @@ class CreateItems < ActiveRecord::Migration
       t.integer :price
       t.string :ingredients
       t.string :description
+      t.references :tickets
     end
   end
 end

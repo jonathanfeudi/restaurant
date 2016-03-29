@@ -1,0 +1,25 @@
+<%= link_to "Back to Items", items_path %>
+<h1><%= @item.name %></h1>
+<p>Price:
+  <%= @item.price %>
+</p>
+<p>Ingredients:
+  <%= @item.ingredients %>
+</p>
+<p>Description: 
+  <%= @item.description %>
+</p>
+<div class="form">
+  <h1>Create New Menu Item</h1>
+  <%= form_for @item, url: {action: "update"} do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name, :value => @item.name %><br>
+  <%= f.label :price %><br>
+  <%= f.text_field :price, :value => @item.price %><br>
+  <%= f.label :ingredients %><br>
+  <%= f.text_field :ingredients, :value => @item.ingredients %><br>
+  <%= f.label :description %><br>
+  <%= f.text_field :description, :value => @item.description%><br>
+  <%= f.submit "Update Item" %><br>
+  <% end %>
+</div>

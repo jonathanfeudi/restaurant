@@ -1,0 +1,14 @@
+<div class="form">
+  <h1>Create New Menu Item</h1>
+  <%= form_for @item do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+  <%= f.label :price %><br>
+  <%= f.text_field :price %><br>
+  <%= f.label :ingredients %><br>
+  <%= f.text_field :ingredients %><br>
+  <%= f.label :description %><br>
+  <%= f.text_field :description %><br>
+  <%= f.submit "Create Item" %><br>
+  <% end %>
+</div>
